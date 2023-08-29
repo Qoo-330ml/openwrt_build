@@ -1,4 +1,4 @@
-# openwrt编译纪录
+# openwrt编译个人纪录
 
 https://github.com/coolsnowwolf/lede/blob/master/README_EN.md
 
@@ -33,3 +33,5 @@ git clone https://github.com/thinktip/luci-theme-neobird.git  ~/lede/package/lea
 ```shell
 sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=[$(shell date +%Y%m%d)]/g' include/image.mk
 ```
+
+感谢包括lean在内各位开发者！
