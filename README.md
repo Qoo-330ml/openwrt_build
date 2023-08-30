@@ -51,5 +51,11 @@ config zone
 	option mtu_fix		1
 ```
 
+### 若要更换编译架构，需要清除旧的编译产物
+```shell
+make dirclean #在源码有大规模更新或者内核更新后执行，以保证编译质量。此操作会删除 /bin和 /build_dir目录中的文件
+make dirclean #更换架构编译前必须执行。此操作会删除 /bin和 /build_dir目录的中的文件( make clean)以及 /staging_dir、 /toolchain、 /tmp和 /logs中的文件
+```
+
 ****
 感谢包括lean在内各位开发者！
