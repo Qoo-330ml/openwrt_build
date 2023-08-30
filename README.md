@@ -1,6 +1,6 @@
 # openwrt编译个人纪录
 
-https://github.com/coolsnowwolf/lede/blob/master/README_EN.md
+参考lean的说明，做好前期准备https://github.com/coolsnowwolf/lede/blob/master/README_EN.md
 
 ### 修改默认ip
 ```shell
