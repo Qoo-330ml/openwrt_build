@@ -35,7 +35,9 @@ sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=[$(shell date +%Y%m%d)]/g' include/image.mk
 ```
 
 ### 旁路由模式设置防火墙
+```shell
 nano package/network/config/firewall/files/firewall.config
+```
 找到lan，追加masq和mtu_fix的值为1
 即
 ```shell
@@ -49,5 +51,5 @@ config zone
 	option mtu_fix		1
 ```
 
-
+****
 感谢包括lean在内各位开发者！
