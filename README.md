@@ -34,10 +34,20 @@ git clone https://github.com/thinktip/luci-theme-neobird.git  ~/lede/package/lea
 sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=[$(shell date +%Y%m%d)]/g' include/image.mk
 ```
 
-#旁路由模式防火墙
+### 旁路由模式设置防火墙
 nano package/network/config/firewall/files/firewall.config
-找到lan，修改masq和mtu_fix的值为1
-
+找到lan，追加masq和mtu_fix的值为1
+即
+```shell
+config zone
+	option name		lan
+	list   network		'lan'
+	option input		ACCEPT
+	option output		ACCEPT
+	option forward		ACCEPT
+	option masq		1
+	option mtu_fix		1
+```
 
 
 感谢包括lean在内各位开发者！
