@@ -11,7 +11,7 @@ sed -i 's/192.168.1.1/192.168.10.2/g' package/base-files/files/bin/config_genera
 ```shell
 sed -i 's/\/bin\/ash/\/bin\/bash/' package/base-files/files/etc/passwd
 ```
-#今天发现在编译mipsel架构时，替换为bash则无法连接ssh，提示bash不存在，只能用ash
+#今天发现在编译mipsel架构时，替换为bash则无法连接ssh，提示bash不存在，只能用ash -- 2023.08.31
 
 ### 删除默认密码
 ```shell
