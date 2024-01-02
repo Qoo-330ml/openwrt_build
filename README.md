@@ -2,7 +2,7 @@
 
 参考lean的说明，做好前期准备https://github.com/coolsnowwolf/lede/blob/master/README_EN.md
 
-## 编译命令
+### 编译命令
 
 1. 首先装好 Linux 系统，推荐 Debian 11 或 Ubuntu LTS
 
@@ -27,7 +27,7 @@
    cd lede
    ```
 
-#以下按照个人自定义修改
+## 以下按照个人自定义修改
 
 ### 修改默认ip
 ```shell
@@ -84,6 +84,20 @@ config zone
 	option masq		1
 	option mtu_fix		1
 ```
+
+### 二次编译：
+```bash
+cd lede
+git pull
+./scripts/feeds update -a
+./scripts/feeds install -a
+make defconfig
+make download -j8
+make V=s -j$(nproc)
+```
+
+
+
 
 ### 若要更换编译架构，需要清除旧的编译产物
 ```shell
