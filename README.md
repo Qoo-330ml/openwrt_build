@@ -2,6 +2,37 @@
 
 参考lean的说明，做好前期准备https://github.com/coolsnowwolf/lede/blob/master/README_EN.md
 
+## 编译命令
+
+1. 首先装好 Linux 系统，推荐 Debian 11 或 Ubuntu LTS
+
+2. 安装编译依赖
+
+   ```bash
+   sudo apt update -y
+   sudo apt full-upgrade -y
+   sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
+   bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
+   git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libfuse-dev libglib2.0-dev libgmp3-dev \
+   libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libpython3-dev libreadline-dev \
+   libssl-dev libtool lrzsz mkisofs msmtp ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 \
+   python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo \
+   uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+   ```
+
+3. 下载源代码，更新 feeds 并选择配置
+
+   ```bash
+   git clone https://github.com/coolsnowwolf/lede
+   cd lede
+
+
+
+
+
+
+
+
 ### 修改默认ip
 ```shell
 sed -i 's/192.168.1.1/192.168.10.2/g' package/base-files/files/bin/config_generate
@@ -18,17 +49,23 @@ sed -i 's/\/bin\/ash/\/bin\/bash/' package/base-files/files/etc/passwd
 sed -i "/CYXluq4wUazHjmCDBCqXF/d" package/lean/default-settings/files/zzz-default-settings
 ```
 
+### neobird主题
+```shell
+git clone https://github.com/thinktip/luci-theme-neobird.git  ~/lede/package/lean/luci-theme-neobird
+```
+
+
 ### 添加常用软件包
 ```shell
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default #kenzo的软件源
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default #small科学依赖
 #sed -i '$a src-git opentopd  https://github.com/sirpdboy/sirpdboy-package' feeds.conf.default #sirpdboy的软件源，和kenzo重复
+git pull
+./scripts/feeds update -a
+./scripts/feeds install -a
+make menuconfig
 ```
 
-### neobird主题
-```shell
-git clone https://github.com/thinktip/luci-theme-neobird.git  ~/lede/package/lean/luci-theme-neobird
-```
 
 ### 编译固件名字开头增加时间戳
 ```shell
